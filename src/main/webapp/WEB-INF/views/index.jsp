@@ -31,7 +31,7 @@
 		How many cards? <input type="number" name="draw"> <!-- // give parameter name to call with controller -->
 		<input type="submit" value="Draw">
 	</form>
-		<a href="/new/shuffle=${cards.deckId}">Reshuffle</a>
+		<a href="/reshuffle">Reshuffle</a>
 	
 	</div>
 	

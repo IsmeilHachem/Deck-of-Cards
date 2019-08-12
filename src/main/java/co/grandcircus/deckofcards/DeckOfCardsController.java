@@ -39,8 +39,9 @@ public class DeckOfCardsController {
 	}
 	
 	@RequestMapping("/reshuffle")
-	public ModelAndView shuffle(@RequestParam(value="deckId", required=false) String id) {
-		return new ModelAndView("/reshuffled");
+	public ModelAndView shuffle() {
+		List<DrawCards> cards = apiService.currentDeck();
+		return new ModelAndView("redirect:/");
 	}
 //	@RequestMapping("/reshuffle")
 //	public ModelAndView shuffle(@RequestParam("deckId") String id) {

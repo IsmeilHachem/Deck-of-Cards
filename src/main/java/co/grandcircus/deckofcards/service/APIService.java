@@ -1,5 +1,7 @@
 package co.grandcircus.deckofcards.service;
 
+import java.util.List;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import co.grandcircus.deckofcards.entity.CardsResponse;
+import co.grandcircus.deckofcards.entity.DrawCards;
 import co.grandcircus.deckofcards.entity.Homepage;
 
 @Component
@@ -29,12 +32,21 @@ private RestTemplate restTemplate = new RestTemplate();
 	public Integer display() {
 		String deckId = "x7wxkrutawyb";
 
-		String url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
+		String url = "https://deckofcardsapi.com/api/deck/" + deckId + "/";
 		
 		Homepage response = restTemplate.getForObject(url, Homepage.class);
 		
 		return response.getRemaining();
 
+	}
+	
+	public List<DrawCards> currentDeck() {
+		
+		String deckId = "x7wxkrutawyb";
+
+		String url = "https://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/";
+		
+		return restTemplate.getForObject(url, CardsResponse.class).getCards();
 	}
 	
 	public CardsResponse draw(Integer count){

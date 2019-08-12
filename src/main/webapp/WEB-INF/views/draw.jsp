@@ -16,6 +16,6 @@
 		</li>
 		</c:forEach>
 	</ul>
-
+	<a href ="/">Homepage</a>
 </body>
 </html>
